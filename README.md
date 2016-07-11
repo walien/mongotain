@@ -21,8 +21,8 @@ Import the JAR into your maven project :
 Launch Mongotain during your app startup :
  ```
     Mongotain mongotain = Mongotain.builder()
-                 .configDB(Optional.empty(), "mongotain_config") // By default on localhost:27017
-                 .targetDB(Optional.empty(), "mongotain_target") // By default on localhost:27017
+                 .configDB(Optional.empty(), "mongotain_config") // MongoURI is set by default : mongodb://localhost:27017
+                 .targetDB(Optional.empty(), "mongotain_target") // MongoURI is set by default : mongodb://localhost:27017
                  .scriptsPath(Paths.get("[PATH TO YOUR MONGODB JS SCRIPTS]"))
                  .build();
 
