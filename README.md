@@ -12,9 +12,9 @@ mvn clean install
 Import the JAR into your maven project :
  ```
     <dependency>
-        <groupId>com.google.guava</groupId>
-        <artifactId>guava</artifactId>
-        <version>19.0</version>
+        <groupId>fr.walien</groupId>
+        <artifactId>mongotain</artifactId>
+        <version>1.0-SNAPSHOT</version>
      </dependency>
  ```
 
