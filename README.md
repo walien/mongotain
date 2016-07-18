@@ -12,8 +12,8 @@ mvn clean install
 Import the JAR into your maven project :
  ```
     <dependency>
-        <groupId>fr.walien</groupId>
-        <artifactId>mongotain</artifactId>
+        <groupId>org.mongotain</groupId>
+        <artifactId>mongotain-java</artifactId>
         <version>1.0-SNAPSHOT</version>
      </dependency>
  ```
