@@ -37,7 +37,7 @@ public class ScriptsExecutor {
         return !script.getExecutions().isEmpty();
     }
 
-    private boolean checkForChangesAndUpdate(Script script) {
+    private boolean hasChanged(Script script) {
         byte[] newHash = MD5.newHasher().putString(script.getContent(), Charsets.UTF_8).hash().asBytes();
         byte[] oldHash = script.getMd5();
         script.setMd5(newHash);
@@ -80,7 +80,14 @@ public class ScriptsExecutor {
     public List<Script> execute(List<Script> scripts) {
         List<Script> scriptsToExecute = scripts.stream()
                 .map(this::loadContent)
-                .filter(script -> !hasBeenExecuted(script) || checkForChangesAndUpdate(script))
+                .filter(script -> !hasBeenExecuted(script))
+                .filter(script -> {
+                    if (hasChanged(script)) {
+                        logger.warn("Content of the script {} has changed. The script will not be re-executed", script.getPath());
+                        return false;
+                    }
+                    return true;
+                })
                 .collect(Collectors.toList());
         scriptsToExecute.forEach(this::execute);
         return scriptsToExecute;
