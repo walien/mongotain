@@ -1,4 +1,4 @@
-package fr.walien.mongotain.serialization;
+package org.mongotain.serialization;
 
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;

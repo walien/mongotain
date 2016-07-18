@@ -1,4 +1,4 @@
-package fr.walien.mongotain.domain;
+package org.mongotain.domain;
 
 import java.time.Instant;
 

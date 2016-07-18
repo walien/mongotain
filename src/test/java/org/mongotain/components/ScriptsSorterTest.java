@@ -1,7 +1,7 @@
-package fr.walien.mongotain.components;
+package org.mongotain.components;
 
 import com.google.common.collect.ImmutableList;
-import fr.walien.mongotain.domain.Script;
+import org.mongotain.domain.Script;
 import org.junit.Test;
 
 import java.nio.file.Paths;

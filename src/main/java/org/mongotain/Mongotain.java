@@ -1,9 +1,9 @@
-package fr.walien.mongotain;
+package org.mongotain;
 
-import fr.walien.mongotain.components.DBConnector;
-import fr.walien.mongotain.components.ScriptsDiscoverer;
-import fr.walien.mongotain.components.ScriptsExecutor;
-import fr.walien.mongotain.domain.Script;
+import org.mongotain.components.DBConnector;
+import org.mongotain.components.ScriptsDiscoverer;
+import org.mongotain.components.ScriptsExecutor;
+import org.mongotain.domain.Script;
 import org.slf4j.Logger;
 
 import java.nio.file.Path;

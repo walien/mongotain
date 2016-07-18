@@ -1,4 +1,4 @@
-package fr.walien.mongotain.domain;
+package org.mongotain.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jongo.marshall.jackson.oid.MongoId;

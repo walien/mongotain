@@ -1,10 +1,10 @@
-package fr.walien.mongotain.components;
+package org.mongotain.components;
 
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.mongodb.DB;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
-import fr.walien.mongotain.serialization.BsonJSR310Module;
+import org.mongotain.serialization.BsonJSR310Module;
 import org.jongo.Jongo;
 import org.jongo.Mapper;
 import org.jongo.MongoCollection;

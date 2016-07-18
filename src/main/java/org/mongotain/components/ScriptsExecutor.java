@@ -1,11 +1,11 @@
-package fr.walien.mongotain.components;
+package org.mongotain.components;
 
 import com.google.common.base.Charsets;
 import com.google.common.base.Stopwatch;
 import com.google.common.hash.HashFunction;
 import com.google.common.hash.Hashing;
-import fr.walien.mongotain.domain.Script;
-import fr.walien.mongotain.domain.ScriptExecution;
+import org.mongotain.domain.Script;
+import org.mongotain.domain.ScriptExecution;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

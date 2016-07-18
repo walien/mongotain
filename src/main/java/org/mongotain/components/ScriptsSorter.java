@@ -1,6 +1,6 @@
-package fr.walien.mongotain.components;
+package org.mongotain.components;
 
-import fr.walien.mongotain.domain.Script;
+import org.mongotain.domain.Script;
 
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;

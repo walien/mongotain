@@ -1,4 +1,4 @@
-package fr.walien.mongotain;
+package org.mongotain;
 
 import org.junit.Test;
 

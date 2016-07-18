@@ -1,6 +1,6 @@
-package fr.walien.mongotain.components;
+package org.mongotain.components;
 
-import fr.walien.mongotain.domain.Script;
+import org.mongotain.domain.Script;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
