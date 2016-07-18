@@ -82,7 +82,7 @@ public class ScriptsExecutor {
                 .map(this::loadContent)
                 .filter(script -> {
                     if (hasChanged(script)) {
-                        logger.warn("Content of the script {} has changed. The script will not be re-executed", script.getPath());
+                        logger.warn("[EXECUTION] - Content of the script {} has changed. The script will not be re-executed", script.getPath());
                         return false;
                     }
                     return true;
