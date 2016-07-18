@@ -80,7 +80,6 @@ public class ScriptsExecutor {
     public List<Script> execute(List<Script> scripts) {
         List<Script> scriptsToExecute = scripts.stream()
                 .map(this::loadContent)
-                .filter(script -> !hasBeenExecuted(script))
                 .filter(script -> {
                     if (hasChanged(script)) {
                         logger.warn("Content of the script {} has changed. The script will not be re-executed", script.getPath());
@@ -88,6 +87,7 @@ public class ScriptsExecutor {
                     }
                     return true;
                 })
+                .filter(script -> !hasBeenExecuted(script))
                 .collect(Collectors.toList());
         scriptsToExecute.forEach(this::execute);
         return scriptsToExecute;
