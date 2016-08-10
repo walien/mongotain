@@ -48,7 +48,7 @@ public class ScriptsExecutor {
         Stopwatch stopwatch = Stopwatch.createStarted();
         try {
             String scriptContent = new String(Files.readAllBytes(script.getPath()), StandardCharsets.UTF_8);
-            this.targetDBConnector.eval(scriptContent);
+            targetDBConnector.eval(scriptContent);
             logger.info("[EXECUTION] - {} - execution done. Took {} ms", script.getPath().toString(), stopwatch.elapsed(TimeUnit.MILLISECONDS));
             markAsExecuted(script);
             return script;

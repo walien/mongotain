@@ -22,7 +22,7 @@ public class ScriptsSorter {
                 .collect(Collectors.joining(SEPARATOR));
     }
 
-    public static int versionCompare(String str1, String str2) {
+    private int versionCompare(String str1, String str2) {
         String[] versions1 = str1.split(SEPARATOR_PATTERN);
         String[] versions2 = str2.split(SEPARATOR_PATTERN);
         int i = 0;
