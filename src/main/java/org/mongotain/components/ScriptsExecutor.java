@@ -86,7 +86,13 @@ public class ScriptsExecutor {
                     }
                     return true;
                 })
-                .filter(script -> !hasBeenExecuted(script))
+                .filter(script -> {
+                    if (hasBeenExecuted(script)) {
+                        logger.info("[EXECUTION] - Script {} already executed", script.getPath());
+                        return false;
+                    }
+                    return true;
+                })
                 .collect(Collectors.toList());
         scriptsToExecute.forEach(this::execute);
         return scriptsToExecute;
