@@ -13,7 +13,6 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.time.Instant;
-import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
@@ -38,10 +37,10 @@ public class ScriptsExecutor {
     }
 
     private boolean hasChanged(Script script) {
-        byte[] newHash = MD5.newHasher().putString(script.getContent(), Charsets.UTF_8).hash().asBytes();
-        byte[] oldHash = script.getMd5();
+        String newHash = MD5.newHasher().putString(script.getContent(), Charsets.UTF_8).hash().toString();
+        String oldHash = script.getMd5();
         script.setMd5(newHash);
-        return script.getMd5() != null && !Arrays.equals(newHash, oldHash);
+        return oldHash != null && !newHash.equals(oldHash);
     }
 
     private Script execute(Script script) {
