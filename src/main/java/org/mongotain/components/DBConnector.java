@@ -9,6 +9,7 @@ import org.jongo.Jongo;
 import org.jongo.Mapper;
 import org.jongo.MongoCollection;
 import org.jongo.marshall.jackson.JacksonMapper;
+import org.mongotain.serialization.PathJsonModule;
 import org.slf4j.Logger;
 
 import java.net.UnknownHostException;
@@ -44,6 +45,7 @@ public class DBConnector {
     private static Mapper buildObjectMapper() {
         return new JacksonMapper.Builder()
                 .registerModule(new BsonJSR310Module())
+                .registerModule(new PathJsonModule())
                 .enable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS)
                 .build();
     }
