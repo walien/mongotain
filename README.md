@@ -24,6 +24,7 @@ Launch Mongotain during your app startup :
                  .configDB("mongotain_config") // MongoURI is set by default : mongodb://localhost:27017
                  .targetDB("mongotain_target") // MongoURI is set by default : mongodb://localhost:27017
                  .scriptsPath(Paths.get("[PATH TO YOUR MONGODB JS SCRIPTS]"))
+                 .allowMultipleScriptExecutions() // only if you want the db scripts to be re-executed during each mongotain run
                  .build();
 
     mongotain.start();

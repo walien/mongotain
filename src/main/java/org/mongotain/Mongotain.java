@@ -31,7 +31,7 @@ public class Mongotain {
         DBConnector configDBConnector = new DBConnector(config.getConfigDbUri(), config.getConfigDbName()).connect();
         DBConnector targetDBConnector = new DBConnector(config.getTargetDbUri(), config.getTargetDbName()).connect();
         List<Script> availableScripts = new ScriptsDiscoverer(config.getScriptsPath(), configDBConnector).discover();
-        List<Script> executedScripts = new ScriptsExecutor(targetDBConnector).execute(availableScripts);
+        List<Script> executedScripts = new ScriptsExecutor(targetDBConnector, config.isAllowMultipleScriptExecutions()).execute(availableScripts);
         executedScripts.forEach(script -> configDBConnector.getCollection(Script.COLLECTION).save(script));
         return this;
     }

@@ -27,9 +27,11 @@ public class ScriptsExecutor {
     private static final Logger logger = LoggerFactory.getLogger(ScriptsExecutor.class);
 
     private final DBConnector targetDBConnector;
+    private final boolean allowMultipleScriptExecutions;
 
-    public ScriptsExecutor(DBConnector targetDBConnector) {
+    public ScriptsExecutor(DBConnector targetDBConnector, boolean allowMultipleScriptExecutions) {
         this.targetDBConnector = targetDBConnector;
+        this.allowMultipleScriptExecutions = allowMultipleScriptExecutions;
     }
 
     private boolean hasBeenExecuted(Script script) {
@@ -87,8 +89,8 @@ public class ScriptsExecutor {
                     return true;
                 })
                 .filter(script -> {
-                    if (hasBeenExecuted(script)) {
-                        logger.info("[EXECUTION] - Script {} already executed", script.getPath());
+                    if (hasBeenExecuted(script) && !allowMultipleScriptExecutions) {
+                        logger.info("[EXECUTION] - Script {} already executed and multi script executions feature is not enabled", script.getPath());
                         return false;
                     }
                     return true;
