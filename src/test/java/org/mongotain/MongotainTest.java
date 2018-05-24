@@ -13,6 +13,7 @@ public class MongotainTest {
                 .configDB("mongotain_config")
                 .targetDB("mongotain_target")
                 .scriptsPath(Paths.get("/Users/eoriou/dev/tests/mongotain"))
+                .allowMultipleScriptExecutions()
                 .build();
 
         mongotain.start();
@@ -25,6 +26,7 @@ public class MongotainTest {
                 .configDB(null)
                 .targetDB("mongotain_target")
                 .scriptsPath(Paths.get("/Users/eoriou/dev/tests/mongotain"))
+                .allowMultipleScriptExecutions()
                 .build();
 
         mongotain.start();

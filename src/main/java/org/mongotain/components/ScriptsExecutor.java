@@ -52,7 +52,7 @@ public class ScriptsExecutor {
             markAsExecuted(script);
             return script;
         } catch (IOException e) {
-            logger.error("Unable to read the content of the script " + script.getPath().toString(), e);
+            logger.error("[EXECUTION] - unable to read the content of the script " + script.getPath().toString(), e);
             markAsExecutedWithErrors(script, e.getMessage());
         }
         return null;
