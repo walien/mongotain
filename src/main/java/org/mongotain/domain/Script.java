@@ -20,7 +20,7 @@ public class Script {
 
     private List<ScriptExecution> executions = new ArrayList<>();
 
-    private byte[] md5;
+    private String md5;
 
     @JsonIgnore
     private String content;
@@ -37,7 +37,7 @@ public class Script {
         return executions;
     }
 
-    public byte[] getMd5() {
+    public String getMd5() {
         return md5;
     }
 
@@ -60,7 +60,7 @@ public class Script {
         return this;
     }
 
-    public Script setMd5(final byte[] md5) {
+    public Script setMd5(final String md5) {
         this.md5 = md5;
         return this;
     }

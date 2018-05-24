@@ -32,7 +32,7 @@ public class ScriptsDiscoverer {
 
     private Optional<Script> findScriptByPath(Path path) {
         return Optional.ofNullable(dbConnector.getCollection(Script.COLLECTION)
-                .findOne("{ path: # }", path.toAbsolutePath().toString())
+                .findOne("{ path: # }", path.toString())
                 .as(Script.class));
     }
 
