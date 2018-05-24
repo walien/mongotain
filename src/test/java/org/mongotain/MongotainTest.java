@@ -3,7 +3,6 @@ package org.mongotain;
 import org.junit.Test;
 
 import java.nio.file.Paths;
-import java.util.Optional;
 
 public class MongotainTest {
 
@@ -11,12 +10,23 @@ public class MongotainTest {
     public void should_properly_start_mongotain() {
 
         Mongotain mongotain = Mongotain.builder()
-                .configDB(Optional.empty(), "mongotain_config")
-                .targetDB(Optional.empty(), "mongotain_target")
+                .configDB("mongotain_config")
+                .targetDB("mongotain_target")
                 .scriptsPath(Paths.get("/Users/eoriou/dev/tests/mongotain"))
                 .build();
 
-        mongotain.init();
+        mongotain.start();
     }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void should_properly_crash_because_of_missing_param() {
+
+        Mongotain mongotain = Mongotain.builder()
+                .configDB(null)
+                .targetDB("mongotain_target")
+                .scriptsPath(Paths.get("/Users/eoriou/dev/tests/mongotain"))
+                .build();
+
+        mongotain.start();
+    }
 }

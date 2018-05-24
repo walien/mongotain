@@ -38,12 +38,12 @@ public class ScriptsDiscoverer {
 
     public List<Script> discover() {
         try {
-            List<Script> disoveredScripts = StreamSupport.stream(Files.newDirectoryStream(scriptsPath).spliterator(), false)
+            List<Script> discoveredScripts = StreamSupport.stream(Files.newDirectoryStream(scriptsPath).spliterator(), false)
                     .map(scriptPath -> findScriptByPath(scriptPath).orElse(new Script().setPath(scriptPath)))
                     .sorted(sorter::sortByName)
                     .collect(Collectors.toList());
-            logger.info("[DISCOVER] - {} scripts found in {}", disoveredScripts.size(), scriptsPath.toString());
-            return disoveredScripts;
+            logger.info("[DISCOVER] - {} scripts found in {}", discoveredScripts.size(), scriptsPath.toString());
+            return discoveredScripts;
         } catch (IOException e) {
             logger.error("Unable to read the content of the scripts directory (provided " +
                     "path = " + scriptsPath.toString() + ")", e);

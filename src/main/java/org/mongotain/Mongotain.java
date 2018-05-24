@@ -34,7 +34,7 @@ public class Mongotain {
         return new MongotainBuilder();
     }
 
-    public Mongotain init() {
+    public Mongotain start() {
         logger.info("[STARTUP] - Mongotain is starting with [ configDB = {}/{}, targetDB = {}/{}, " +
                 "scriptsPath = {} ]", configDbUri, configDbName, targetDbUri, targetDbName, scriptsPath);
         DBConnector configDBConnector = new DBConnector(configDbUri, configDbName).connect();
@@ -58,19 +58,27 @@ public class Mongotain {
         }
 
         private IllegalArgumentException missingMandatoryParam(String paramName) {
-            return new IllegalArgumentException("mandatory param " + paramName + "is missing");
+            return new IllegalArgumentException("mandatory param " + paramName + " is missing");
         }
 
-        public MongotainBuilder configDB(Optional<String> uri, String dbName) {
-            this.configDbUri = uri.orElse("mongodb://localhost");
+        public MongotainBuilder configDB(String dbName, String dbUri) {
             this.configDbName = Optional.ofNullable(dbName).orElseThrow(() -> missingMandatoryParam("configDbName"));
+            this.configDbUri = Optional.ofNullable(dbUri).orElseThrow(() -> missingMandatoryParam("configDbUri"));
             return this;
         }
 
-        public MongotainBuilder targetDB(Optional<String> uri, String dbName) {
-            this.targetDbUri = uri.orElse("mongodb://localhost");
+        public MongotainBuilder configDB(String dbName) {
+            return configDB(dbName, "mongodb://localhost");
+        }
+
+        public MongotainBuilder targetDB(String dbName, String dbUri) {
             this.targetDbName = Optional.ofNullable(dbName).orElseThrow(() -> missingMandatoryParam("targetDbName"));
+            this.targetDbUri = Optional.ofNullable(dbUri).orElseThrow(() -> missingMandatoryParam("targetDbUri"));
             return this;
+        }
+
+        public MongotainBuilder targetDB(String dbName) {
+            return targetDB(dbName, "mongodb://localhost");
         }
 
         public MongotainBuilder scriptsPath(Path scriptsPath) {
