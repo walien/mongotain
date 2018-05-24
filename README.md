@@ -10,7 +10,7 @@ mvn clean install
 ```
 
 Import the JAR into your maven project :
- ```
+ ```xml
     <dependency>
         <groupId>org.mongotain</groupId>
         <artifactId>mongotain-java</artifactId>
@@ -19,12 +19,12 @@ Import the JAR into your maven project :
  ```
 
 Launch Mongotain during your app startup :
- ```
+ ```java
     Mongotain mongotain = Mongotain.builder()
-                 .configDB(Optional.empty(), "mongotain_config") // MongoURI is set by default : mongodb://localhost:27017
-                 .targetDB(Optional.empty(), "mongotain_target") // MongoURI is set by default : mongodb://localhost:27017
+                 .configDB("mongotain_config") // MongoURI is set by default : mongodb://localhost:27017
+                 .targetDB("mongotain_target") // MongoURI is set by default : mongodb://localhost:27017
                  .scriptsPath(Paths.get("[PATH TO YOUR MONGODB JS SCRIPTS]"))
                  .build();
 
-    mongotain.init();
+    mongotain.start();
  ```
